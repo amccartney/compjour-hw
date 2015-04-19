@@ -1,11 +1,9 @@
 import requests
 import json
 
-xfile = requests.get("http://www.compjour.org/files/code/json-examples/maps.googleapis-geocode-mcclatchy.json")
+data_url = "http://www.compjour.org/files/code/json-examples/maps.googleapis-geocode-mcclatchy.json"
 
-txt = xfile.text
-
-obj = json.loads(txt)
+obj = json.loads(requests.get(data_url).text)
 
 results_obj = obj['results'][0]
 

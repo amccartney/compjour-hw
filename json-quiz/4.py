@@ -1,11 +1,9 @@
 import requests
 import json
 
-xfile = requests.get('http://www.compjour.org/files/code/json-examples/spotify-related-to-beyonce.json')
+data_url = "http://www.compjour.org/files/code/json-examples/spotify-related-to-beyonce.json"
 
-txt = xfile.text
-
-obj = json.loads(txt)
+obj = json.loads(requests.get(data_url).text)
 
 genre_list = obj['artists'][0]['genres']
 

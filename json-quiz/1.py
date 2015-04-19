@@ -1,11 +1,9 @@
 import requests
 import json
 
-xfile = requests.get("http://www.compjour.org/files/code/json-examples/analyticsgov-realtime.json")
+data_url = "http://www.compjour.org/files/code/json-examples/analyticsgov-realtime.json"
 
-txt = xfile.text
-
-obj = json.loads(txt)
+obj = json.loads(requests.get(data_url).text)
 
 print("A. " + obj['name'])
 print("B. " + obj['taken_at'])
