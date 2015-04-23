@@ -1,5 +1,7 @@
 ## Twitter bot memo
 
+#### So I'm still working this out -- forgot about the whole "calculation" thing. 
+
 I want to make a bot called "Millennial facts" 
 
 1. This bot will use the Twitter API to search for tweets with phrases like "millennials are" or "millennials like" 
