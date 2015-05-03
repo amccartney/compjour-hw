@@ -1,7 +1,7 @@
-import requests, json, bs4, re
+import requests, bs4
 from links import urls
 
-tmp = open('tmp-3.txt', 'w')
+tmp = open('tmp.txt', 'w')
 
 for url in urls:
     response = requests.get(url).text
@@ -12,5 +12,3 @@ for url in urls:
     for e in emoji_desc:
         if e:
             tmp.write(e.text + '\n')
-
-#    tmp.write(str(response))

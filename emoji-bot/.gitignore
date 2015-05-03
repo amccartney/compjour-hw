@@ -1,4 +1,5 @@
-main_page_urls.txt
+main_urls.py
+links.txt
 scraper.py
 tmp.txt
 sample-text.txt
