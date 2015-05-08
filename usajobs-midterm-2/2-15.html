@@ -1,0 +1,164 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["geochart"]});
+      google.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+        var data = [['City', 'Number of Jobs'], ['Victorville', 1], ['El Dorado Hills', 3], ['Clearlake', 2], ['Lemoore Naval Air Station', 3], ['Parlier', 1], ['Folsom', 1], ['San Francisco County', 1], ['El Segundo', 5], ['Bridgeport', 2], ['Winterhaven', 4], ['Alameda', 2], ['Santa Cruz', 1], ['Susanville', 7], ['Adelanto', 1], ['March AFB', 3], ['Arcata', 5], ['Los Angeles', 50], ['Palmdale', 3], ['Adin', 5], ['Camp Pendleton', 5], ['Acton', 12], ['Brawley', 2], ['Kings Canyon National Park', 1], ['Agoura Hills', 1], ['Turlock', 1], ['San Luis Obispo', 1], ['McClellan', 2], ['Norwalk', 1], ['Davis', 6], ['China Lake', 7], ['Travis AFB', 12], ['San Jose', 4], ['Byron', 1], ['Livermore', 4], ['Edwards AFB', 39], ['Irvine', 1], ['Yorba Linda', 1], ['Palo Alto', 30], ['Corona', 5], ['Pioneer', 1], ['Fresno', 20], ['Placerville', 1], ['Santa Rosa', 4], ['San Bernardino', 1], ['Tulare', 3], ['Ventura', 3], ['Seaside', 3], ['Chico', 5], ['Naval Air Station San Diego', 1], ['El Centro', 1], ['Stanford', 1], ['Ukiah', 5], ['Moffett Field', 5], ['Yosemite National Park', 2], ['Imperial', 1], ['Death Valley', 1], ['Carson', 2], ['Oakland', 7], ['Beale AFB', 23], ['Bakersfield', 6], ['Loma Linda', 33], ['Whiskeytown', 1], ['Capitola', 1], ['Barstow', 23], ['Santa Barbara', 2], ['San Francisco', 39], ['Naval Post Graduate School', 1], ['Albany', 4], ['Vallejo', 1], ['Mountain View', 3], ['Arcadia', 4], ['Foresthill', 1], ['Naval Station Complex', 4], ['Fall River Mills', 2], ['Mather AFB', 4], ['Redding', 7], ['Santa Maria', 1], ['Monterey', 20], ['Big Creek', 1], ['Quincy', 2], ['Herlong Sierra Ordnance Depot', 4], ['Vandenberg AFB', 5], ['Twentynine Palms', 7], ['Yreka', 1], ['Sunnyvale', 2], ['Fort Irwin', 24], ['Naval Air Station Miramar ', 10], ['Los Angeles County', 6], ['Eureka', 4], ['Riverside', 1], ['Camp Parks', 3], ['Martinez', 9], ['Fort Hunter Liggett', 3], ['Stockton', 2], ['Naval Medical Center', 6], ['Oceanside', 10], ['Hollister', 1], ['Van Nuys', 1], ['Porterville', 1], ['Alpine', 2], ['Port Hueneme', 13], ['Ontario', 2], ['Fairfield', 1], ['San Bruno', 1], ['Alturas', 19], ['San Diego', 24], ['Sonora', 1], ['Auburn', 2], ['Bishop', 6], ['Citrus Heights', 2], ['Vacaville', 1], ['Menlo Park', 5], ['Sacramento', 21], ['Point Loma Complex', 3], ['Mendota', 1], ['Chester', 3], ['Alameda County', 2], ['Lemoore', 8], ['Long Beach', 44], ['Modesto', 4]];
+        var datatable = google.visualization.arrayToDataTable(data);
+        var options = {'region': 'US-CA', 'displayMode': 'markers','width': 800, 'height': 500, 'resolution': 'provinces'};
+        var chart = new google.visualization.GeoChart(document.getElementById('mychart'));
+        chart.draw(datatable, options);
+      }
+    </script>
+
+    <div class="container">
+      <h1 style="text-align:center">Hello chart</h1>
+      <div id="mychart"></div>
+
+      <h2 style="text-align:center">Hello table</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Jobs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Los Angeles</td><td>50</td></tr>
+<tr><td>Long Beach</td><td>44</td></tr>
+<tr><td>Edwards AFB</td><td>39</td></tr>
+<tr><td>San Francisco</td><td>39</td></tr>
+<tr><td>Loma Linda</td><td>33</td></tr>
+<tr><td>Palo Alto</td><td>30</td></tr>
+<tr><td>Fort Irwin</td><td>24</td></tr>
+<tr><td>San Diego</td><td>24</td></tr>
+<tr><td>Beale AFB</td><td>23</td></tr>
+<tr><td>Barstow</td><td>23</td></tr>
+<tr><td>Sacramento</td><td>21</td></tr>
+<tr><td>Fresno</td><td>20</td></tr>
+<tr><td>Monterey</td><td>20</td></tr>
+<tr><td>Alturas</td><td>19</td></tr>
+<tr><td>Port Hueneme</td><td>13</td></tr>
+<tr><td>Acton</td><td>12</td></tr>
+<tr><td>Travis AFB</td><td>12</td></tr>
+<tr><td>Naval Air Station Miramar </td><td>10</td></tr>
+<tr><td>Oceanside</td><td>10</td></tr>
+<tr><td>Martinez</td><td>9</td></tr>
+<tr><td>Lemoore</td><td>8</td></tr>
+<tr><td>Susanville</td><td>7</td></tr>
+<tr><td>China Lake</td><td>7</td></tr>
+<tr><td>Oakland</td><td>7</td></tr>
+<tr><td>Redding</td><td>7</td></tr>
+<tr><td>Twentynine Palms</td><td>7</td></tr>
+<tr><td>Davis</td><td>6</td></tr>
+<tr><td>Bakersfield</td><td>6</td></tr>
+<tr><td>Los Angeles County</td><td>6</td></tr>
+<tr><td>Naval Medical Center</td><td>6</td></tr>
+<tr><td>Bishop</td><td>6</td></tr>
+<tr><td>El Segundo</td><td>5</td></tr>
+<tr><td>Arcata</td><td>5</td></tr>
+<tr><td>Adin</td><td>5</td></tr>
+<tr><td>Camp Pendleton</td><td>5</td></tr>
+<tr><td>Corona</td><td>5</td></tr>
+<tr><td>Chico</td><td>5</td></tr>
+<tr><td>Ukiah</td><td>5</td></tr>
+<tr><td>Moffett Field</td><td>5</td></tr>
+<tr><td>Vandenberg AFB</td><td>5</td></tr>
+<tr><td>Menlo Park</td><td>5</td></tr>
+<tr><td>Winterhaven</td><td>4</td></tr>
+<tr><td>San Jose</td><td>4</td></tr>
+<tr><td>Livermore</td><td>4</td></tr>
+<tr><td>Santa Rosa</td><td>4</td></tr>
+<tr><td>Albany</td><td>4</td></tr>
+<tr><td>Arcadia</td><td>4</td></tr>
+<tr><td>Naval Station Complex</td><td>4</td></tr>
+<tr><td>Mather AFB</td><td>4</td></tr>
+<tr><td>Herlong Sierra Ordnance Depot</td><td>4</td></tr>
+<tr><td>Eureka</td><td>4</td></tr>
+<tr><td>Modesto</td><td>4</td></tr>
+<tr><td>El Dorado Hills</td><td>3</td></tr>
+<tr><td>Lemoore Naval Air Station</td><td>3</td></tr>
+<tr><td>March AFB</td><td>3</td></tr>
+<tr><td>Palmdale</td><td>3</td></tr>
+<tr><td>Tulare</td><td>3</td></tr>
+<tr><td>Ventura</td><td>3</td></tr>
+<tr><td>Seaside</td><td>3</td></tr>
+<tr><td>Mountain View</td><td>3</td></tr>
+<tr><td>Camp Parks</td><td>3</td></tr>
+<tr><td>Fort Hunter Liggett</td><td>3</td></tr>
+<tr><td>Point Loma Complex</td><td>3</td></tr>
+<tr><td>Chester</td><td>3</td></tr>
+<tr><td>Clearlake</td><td>2</td></tr>
+<tr><td>Bridgeport</td><td>2</td></tr>
+<tr><td>Alameda</td><td>2</td></tr>
+<tr><td>Brawley</td><td>2</td></tr>
+<tr><td>McClellan</td><td>2</td></tr>
+<tr><td>Yosemite National Park</td><td>2</td></tr>
+<tr><td>Carson</td><td>2</td></tr>
+<tr><td>Santa Barbara</td><td>2</td></tr>
+<tr><td>Fall River Mills</td><td>2</td></tr>
+<tr><td>Quincy</td><td>2</td></tr>
+<tr><td>Sunnyvale</td><td>2</td></tr>
+<tr><td>Stockton</td><td>2</td></tr>
+<tr><td>Alpine</td><td>2</td></tr>
+<tr><td>Ontario</td><td>2</td></tr>
+<tr><td>Auburn</td><td>2</td></tr>
+<tr><td>Citrus Heights</td><td>2</td></tr>
+<tr><td>Alameda County</td><td>2</td></tr>
+<tr><td>Victorville</td><td>1</td></tr>
+<tr><td>Parlier</td><td>1</td></tr>
+<tr><td>Folsom</td><td>1</td></tr>
+<tr><td>San Francisco County</td><td>1</td></tr>
+<tr><td>Santa Cruz</td><td>1</td></tr>
+<tr><td>Adelanto</td><td>1</td></tr>
+<tr><td>Kings Canyon National Park</td><td>1</td></tr>
+<tr><td>Agoura Hills</td><td>1</td></tr>
+<tr><td>Turlock</td><td>1</td></tr>
+<tr><td>San Luis Obispo</td><td>1</td></tr>
+<tr><td>Norwalk</td><td>1</td></tr>
+<tr><td>Byron</td><td>1</td></tr>
+<tr><td>Irvine</td><td>1</td></tr>
+<tr><td>Yorba Linda</td><td>1</td></tr>
+<tr><td>Pioneer</td><td>1</td></tr>
+<tr><td>Placerville</td><td>1</td></tr>
+<tr><td>San Bernardino</td><td>1</td></tr>
+<tr><td>Naval Air Station San Diego</td><td>1</td></tr>
+<tr><td>El Centro</td><td>1</td></tr>
+<tr><td>Stanford</td><td>1</td></tr>
+<tr><td>Imperial</td><td>1</td></tr>
+<tr><td>Death Valley</td><td>1</td></tr>
+<tr><td>Whiskeytown</td><td>1</td></tr>
+<tr><td>Capitola</td><td>1</td></tr>
+<tr><td>Naval Post Graduate School</td><td>1</td></tr>
+<tr><td>Vallejo</td><td>1</td></tr>
+<tr><td>Foresthill</td><td>1</td></tr>
+<tr><td>Santa Maria</td><td>1</td></tr>
+<tr><td>Big Creek</td><td>1</td></tr>
+<tr><td>Yreka</td><td>1</td></tr>
+<tr><td>Riverside</td><td>1</td></tr>
+<tr><td>Hollister</td><td>1</td></tr>
+<tr><td>Van Nuys</td><td>1</td></tr>
+<tr><td>Porterville</td><td>1</td></tr>
+<tr><td>Fairfield</td><td>1</td></tr>
+<tr><td>San Bruno</td><td>1</td></tr>
+<tr><td>Sonora</td><td>1</td></tr>
+<tr><td>Vacaville</td><td>1</td></tr>
+<tr><td>Mendota</td><td>1</td></tr>
+        </tbody>
+      </table>
+    </div> <!--end container -->
+
+
+
+
+  <body>
+    <div id="mychart"></div>
+  </body>
+</html>

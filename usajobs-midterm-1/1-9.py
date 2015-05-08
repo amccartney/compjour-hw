@@ -4,8 +4,6 @@ BASE_USAJOBS_URL = "https://data.usajobs.gov/api/jobs"
 
 # State codes file
 state_codes = json.loads(requests.get('http://stash.compjour.org/data/usajobs/us-statecodes.json').text)
-
-# state_names = ['California','Florida','New York','Maryland']
 state_results = [['State', 'Job Count']]
 
 for state in state_codes.keys():

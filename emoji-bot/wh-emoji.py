@@ -23,14 +23,13 @@ wh_tweet = api.user_timeline(id = 'WhiteHouse', count = 1)
 tweet_text = wh_tweet[0].text
 
 
-
+import re
 # Turns words in tweet into emoji -- doesn't work properly yet
 def translate(tweet):
-    print(tweet)
     for e in emoji:
         if e.lower() in tweet.lower():
-            tweet = tweet.lower().replace(e.lower(), emoji[e])
-
+#            tweet = tweet.lower().replace(e.lower(), emoji[e])
+             tweet = re.sub( r"\b" + e.lower() + r"\b", emoji[e], tweet.lower())
     return tweet          
 
 

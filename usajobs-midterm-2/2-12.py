@@ -1,4 +1,5 @@
 import json, requests, os
+from operator import itemgetter
 
 CA_FILE = 'data-hold/california.json'
 
@@ -12,9 +13,14 @@ def cleanmoney(val):
 def cleansalarymax(job):
     return cleanmoney(job['SalaryMax'])
 
-sortedjobs = sorted(jobs, key = cleansalarymax, reverse = True)
+clean_jobs = []
 
 for job in jobs:
-    if cleansalarymax < 100000:
-        
-    print('%s,%d,%d' % (job['JobTitle'], cleanmoney(job['SalaryMin']), cleanmoney(job['SalaryMax'])))
+    if cleanmoney(job['SalaryMax']) < 100000:
+        salary_gap = cleanmoney(job['SalaryMax']) - cleanmoney(job['SalaryMin'])
+        clean_jobs.append([job['JobTitle'], cleanmoney(job['SalaryMin']), cleansalarymax(job),salary_gap])
+
+sorted_jobs = sorted(clean_jobs, key = itemgetter(2), reverse = True)
+highest_diff = sorted_jobs[0]
+
+print("%s,%d,%d" % (highest_diff[0], highest_diff[1], highest_diff[2]))
