@@ -15,6 +15,7 @@ def get_csv():
 def index():
     template = 'index.html'
     object_list = get_csv()
+    object_list = [o for o in object_list if o['x'] != '']
     return render_template(template, object_list=object_list)
 
 @app.route('/<row_id>/')
