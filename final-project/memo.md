@@ -2,11 +2,11 @@
 
 Yes, the contracts are back. Obviously I can't make something on the whole data set, so I just want to take one company and plot all of its contracts in an app. 
 
-# Quick Pitch
+## Quick Pitch
 
 Maps, graphs, some analysis and a list of contracts given to Hewlett-Packard over the last 15 years
 
-# The Old Way - 
+## The Old Way
 
 1. Go to USAspending.gov
 2. Query 'Hewlett-Packard'
@@ -19,19 +19,19 @@ A different picture of the data can be retrieved by making an API query, but a p
 
 If using the API, the data comes in xml form, so it would likely require an extra step to turn it into something usable by conventional programs.
 
-# The New Way -
+## The New Way
 
 1. Go to my site
 3. Query 'Hewlett-Packard'
 4. Receive summary (visual) and listed results for your query that can be downloaded or embedded directly
 
-# Data details
+## Data details
 
-## Where does the data come from? How is it collected?
+### Where does the data come from? How is it collected?
 
 The data comes from USAspending.gov. Right now I am using API queries to download the data, though API queries only return a few fields. I will have to work with that for now until I am able to bulk download the entire data set.
 
-## What data-cleaning/processing needs to be done?
+### What data-cleaning/processing needs to be done?
 
 Little data cleaning needs to be done, but I will need to geocode two locations for every contract -- place of performance and location of recipient. 
 
@@ -39,13 +39,13 @@ I will need to convert the data from xml to a form better suited to a Flask app 
 
 I will also want to run some calculations on the data to find summary facts -- number of contracts by year, value of contracts by year, percent of contracts given to each agency (Army, Navy etc.).
 
-# Implementation details
+## Implementation details
 
-## Describe the public-facing endpoints
+### Describe the public-facing endpoints
 
 For right now I intend for there to be one main summary page that takes all the data and dynamically generates some useful numbers. Then by clicking into different parts of the application you can dig deeper into the data. We'll see how far I get with that
 
-## How will the data be stored?
+### How will the data be stored?
 
 The data will likely be in a json on my computer -- possibly a csv
 
@@ -57,7 +57,7 @@ The data will likely be in a json on my computer -- possibly a csv
 
 # Pre-mortem
 
-- *Really slow load times:* With so many elements on a page and so much data, the page will probably load painfully slow
+- **Really slow load times:** With so many elements on a page and so much data, the page will probably load painfully slow
 
-- *Too much data:* Fifteen years worth of HP data is a lot for a simple app like this. Will have to work on the best way to deal with it on a series of pages.
+- **Too much data:** Fifteen years worth of HP data is a lot for a simple app like this. Will have to work on the best way to deal with it on a series of pages.
 
