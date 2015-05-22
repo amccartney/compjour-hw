@@ -49,13 +49,13 @@ For right now I intend for there to be one main summary page that takes all the 
 
 The data will likely be in a json on my computer -- possibly a csv
 
-# Who else has done it and how is your attempt better?
+## Who else has done it and how is your attempt better?
 
 - [Find The Best](http://www.findthebest.com/) - a research site which is not specific to government contracting data. It's basically USAspending with slightly better queryability and nicer graphic design. My project will be specific to one contractor, and do analysis on their data instead of just displaying it with better margins and padding.
 
 - [FedSpending.org](http://www.fedspending.org/) - Clearly an early attempt at what I want to do eventually, but hasn't been updated since 2012, and looks like it's from 2005. The visuals are very basic and it doesn't allow users to drill down to the actual contract level. My project will do better than just show a brief overview, it will allow people to view down to the contract level.
 
-# Pre-mortem
+## Pre-mortem
 
 - **Really slow load times:** With so many elements on a page and so much data, the page will probably load painfully slow
 
