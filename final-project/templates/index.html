@@ -30,21 +30,20 @@
         <h1>Hewlett-Packard</h1>
         <table border=1 cellpadding=7>
             <tr>
-                <th>-spendingCategory</th>
+                <th>spendingCategory</th>
                 <th>ContractingAgency</th>
-              <th>DateSigned</th>
-              <th>ContractDescription</th>
-              <th>DollarsObligated</th>
-              <th>FiscalYear</th>
-              <th>AgencyID</th>
-              <th>RecipientAddressLine123</th>
-              <th>RecipientCity</th>
-              <th>RecipientState</th>
+                <th>DateSigned</th>
+                <th>ContractDescription</th>
+                <th>DollarsObligated</th>
+                <th>FiscalYear</th>
+                <th>AgencyID</th>
+                <th>RecipientAddressLine123</th>
+                <th>RecipientCity</th>
+                <th>RecipientState</th>
             </tr>
             {% for obj in object_list %}
             <tr>
-                <td><a href="{{ obj.id }}">{{ obj.Site_Name }}</a></td>
-                <td>{{ obj.-spendingCategory }}</td>
+                <td>{{ obj.spendingCategory }}</td>
                 <td>{{ obj.ContractingAgency }}</td>
                 <td>{{ obj.DateSigned }}</td>
                 <td>{{ obj.ContractDescription }}</td>
