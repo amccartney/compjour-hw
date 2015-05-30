@@ -4,6 +4,9 @@
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
         <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
         <style type="text/css">
+        body{
+            background-color: #F2F5F7;
+        }
         * {
             font-family: sans-serif;
         }
@@ -23,40 +26,62 @@
         a {
             text-decoration: none;
         }
+
+        div.contract {
+            background-color: white;
+            padding: 15px;
+            margin: 15px;
+        }
+
         </style>
     </head>
     <body>
-        <!--><div id="map" style="width:100%; height:400px;"></div><!-->
+        <div id="map" style="width:100%; height:400px;"></div>
         <h1>Hewlett-Packard</h1>
-        <table border=1 cellpadding=7>
-            <tr>
-                <th>spendingCategory</th>
-                <th>ContractingAgency</th>
-                <th>DateSigned</th>
-                <th>ContractDescription</th>
-                <th>DollarsObligated</th>
-                <th>FiscalYear</th>
-                <th>AgencyID</th>
-                <th>RecipientAddressLine123</th>
-                <th>RecipientCity</th>
-                <th>RecipientState</th>
-            </tr>
-            {% for obj in object_list %}
-            <tr>
-                <td>{{ obj.spendingCategory }}</td>
-                <td>{{ obj.ContractingAgency }}</td>
-                <td>{{ obj.DateSigned }}</td>
-                <td>{{ obj.ContractDescription }}</td>
-                <td>{{ obj.DollarsObligated }}</td>
-                <td>{{ obj.FiscalYear }}</td>
-                <td>{{ obj.AgencyID }}</td>
-                <td>{{ obj.RecipientAddressLine123 }}</td>
-                <td>{{ obj.RecipientCity }}</td>
-                <td>{{ obj.RecipientState }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-        <!--->
+        <div class="contract">
+        <h3>Most common products or services</h3>
+            <table>
+                <tr>
+                    <th>Product or service</th>
+                     <th>Total dollars</th>
+                     <th># of contracts</th>
+                </tr>
+                {% for prod in products_list[:5] %}        
+                <tr>
+                    <td>{{ prod[0] }}</td>
+                    <td>${{ prod[1] }}</td>
+                    <td>{{ prod[2] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="contract">
+        <h3>Top recipient cities</h3>
+            <table>
+                <tr>
+                    <th>City</th>
+                    <th>Total dollars</th>
+                    <th># of contracts</th>
+                </tr>
+                {% for recip in recipient_city_list[:5] %}        
+                <tr>
+                    <td>{{ recip[0] }}</td>
+                    <td>${{ recip[1] }}</td>
+                    <td>{{ recip[2] }}</td>
+                </tr>
+                {% endfor %}
+            </table>    
+        </div>
+        {% for obj in object_list %}
+            <div class="contract">
+                <small>{{ obj.DateSigned }}</small>
+                <h2>${{ obj.DollarsObligated }}</h2>
+                <h4>{{ obj.AgencyID }} / {{ obj.ContractingAgency }}</h4>
+                <p>{{ obj.ContractDescription }}</p>
+                <p>{{ obj.RecipientAddressLine123 }}, {{ obj.RecipientCity }}, {{ obj.RecipientState }}</p>
+            </div>
+        {% endfor %}
+
         <script type="text/javascript">
             var map = L.map('map').setView([37.8, -96], 4);
             var mapquestLayer = new L.TileLayer('http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
@@ -68,16 +93,16 @@
             var data = {
               "type": "FeatureCollection",
               "features": [
-                {% for obj in object_list %}
+                {% for recip in recipient_city_list %}
                 {
                   "type": "Feature",
                   "properties": {
-                    "Site_Name": "{{ obj.Site_Name }}",
-                    "id": "{{ obj.id }}"
+                    "Site_Name": "{{ recip[0] }}",
+                    "id": "{{ recip[0] }}"
                   },
                   "geometry": {
                     "type": "Point",
-                    "coordinates": [{{ obj.x }}, {{ obj.y }}]
+                    "coordinates": [{{ recip[4] }}, {{ recip[3] }}]
                   }
                 }{% if not loop.last %},{% endif %}
                 {% endfor %}
@@ -94,6 +119,6 @@
             });
             map.addLayer(dataLayer);
         </script>
-        <!-->
+
     </body>
 </html>
