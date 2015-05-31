@@ -90,7 +90,7 @@ for h in hp_data:
     code = h['ProductorServiceCode']
     contract_amount = int(float(h['DollarsObligated'])) 
     if code not in codes:
-        products_code.append([code, contract_amount, 1])
+        products_code.append([code, contract_amount, 1, 'width'])
         codes.append(code)   
     else: 
         for p in products_code:
@@ -100,6 +100,12 @@ for h in hp_data:
         
 products_code = sorted(products_code, key=operator.itemgetter(1), reverse=True)
 
+# TO GET BAR WIDTH IN CHART
+unit = products_code[0][1] / 100
+
+for p in products_code:
+    width = p[1] / unit
+    p[3] = width * 4
 
 
 

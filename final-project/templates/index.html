@@ -3,8 +3,7 @@
     <head>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
         <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-        <script src="http://code.highcharts.com/highcharts.js"></script>
-        <script src="http://code.highcharts.com/modules/exporting.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
         <style type="text/css">
         body{
             background-color: #F2F5F7;
@@ -73,6 +72,11 @@
             margin: 10px;
         }
 
+        div.bar {
+            height: 20px;
+            background-color: black;
+        }
+
         @media screen and (max-width: 1240px) {
            div#map-cities { 
             float: left;
@@ -100,23 +104,25 @@
         }
 
         </style>
+
     </head>
     <body>
         <div id="title"><h1>Hewlett-Packard</h1></div>
         <div class="contract">
         <h2 class="subtitle">Most common products or services</h2>
-        <div id="product_chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
             <table>
                 <tr>
                     <th>Product or service</th>
                      <th>Total dollars</th>
                      <th># of contracts</th>
+                     <th></th>
                 </tr>
                 {% for prod in products_list[:5] %}        
                 <tr>
-                    <td>{{ prod[0] }}</td>
+                    <td style="max-width:500px">{{ prod[0] }}</td>
                     <td>${{ prod[1] }}</td>
                     <td>{{ prod[2] }}</td>
+                    <td style="max-width:500px"><div class="bar" style="width:{{ prod[3]}}px"></div></td>
                 </tr>
                 {% endfor %}
             </table>
@@ -187,62 +193,6 @@
                 }
             });
             map.addLayer(dataLayer);
-        </script>
-        <script type="text/javascript">
-            $(document).ready({
-                $(function () {
-                    $('#product_chart').highcharts({
-                        chart: {
-                            type: 'column'
-                        },
-                        title: {
-                            text: 'Products'
-                        },
-                        xAxis: {
-                            categories: [
-                            {% for prod in products_list[:4] %}
-                                '{{ prod[0] }}',
-                            {% endfor %}
-                                '{{ products_list[5][0] }}'
-                            ],
-                            crosshair: true
-                        },
-                        yAxis: {
-                            min: 0,
-                            title: {
-                                text: 'Total dollars'
-                            }
-                        },
-                        tooltip: {
-                            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
-                            footerFormat: '</table>',
-                            shared: true,
-                            useHTML: true
-                        },
-                        plotOptions: {
-                            column: {
-                                pointPadding: 0.2,
-                                borderWidth: 0
-                            }
-                        }, 
-                        series: [
-                        {% for prod in products_list[:4] %}
-                        {    
-                            name: '{{ prod[0] }}',
-                            data: [{{ prod[1] }}]
-                        
-                        },
-                        {% endfor %}
-                        {    
-                            name: '{{ products_list[5][0] }}',
-                            data: [{{ products_list[5][1] }}]
-                        
-                        }]
-                    });
-                });
-            });
         </script>
 
     </body>
