@@ -126,7 +126,7 @@ def index():
 
 
 @app.route('/<product_id>/')
-def list(product_id):
+def contract_list(product_id):
     template = 'list.html'
     products_list = products_code
     object_list = hp_data
@@ -134,6 +134,17 @@ def list(product_id):
         if p[4] == product_id:
             object_list = [o for o in object_list if p[0] == o["ProductorServiceCode"]]          
             return render_template(template, object_list=object_list) 
+    abort(404)
+
+
+# This doesn't work yet
+@app.route('/<contract_id>/')
+def contract(contract_id):
+    template = 'contract.html'
+    object_list = hp_data
+    for o in object_list:
+        if o['record_count'] == row_id:
+            return render_template(template, object=row) 
     abort(404)
 
 """
