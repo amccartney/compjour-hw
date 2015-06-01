@@ -22,7 +22,6 @@ def contracts_by_agency(hpdata):
     return agencies
 
 
-
 ###################################################
 # CONTRACTS BY RECIPIENT CITY
 
@@ -43,6 +42,8 @@ def contracts_by_city(hpdata):
                     r[2] += 1
 
     recipient_city = sorted(recipient_city, key=operator.itemgetter(1), reverse=True)
+    
+
     # GEOCODING
     maps_url = 'https://maps.googleapis.com/maps/api/geocode/json?'
     for r in recipient_city:
@@ -54,6 +55,17 @@ def contracts_by_city(hpdata):
 
     return recipient_city
 
+    """
+    # GEOCODING HPDATA
+    def geocode(address):
+        atts = {'address': address, 'key': 'AIzaSyDdBsQKgsXLrHAil_feh5RK_g5lyxbRmAU'}
+        resp = requests.get(maps_url, params = atts)
+        data = resp.json()
+        x = data['results'][0]['geometry']['location']['lat']
+        y = data['results'][0]['geometry']['location']['lng']
+        return(x, y)
+    """
+
 ###################################################
 
 
@@ -61,7 +73,7 @@ def contracts_by_city(hpdata):
 '''
 # CONTRACTS BY PERFORMANCE CITY
 performance_city = {}
-for h in hp_data:
+for h in hpdata:
     if h['PlaceofPerformanceState']: # not every contract line has a 'PlaceofPerformanceState' key?
         state = h['PlaceofPerformanceState'].split(':')
         state = state[0]
@@ -79,7 +91,7 @@ print(performance_city)
 # DOLLARS OBLIGATED BY FISCAL YEAR
 def dollars_by_fiscal_year(hpdata):
     fiscal_year = {}
-    for h in hp_data:
+    for h in hpdata:
         year = h['FiscalYear']
         contract_amount = float(h['DollarsObligated'])
         if year in fiscal_year:

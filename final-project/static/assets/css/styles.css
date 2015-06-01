@@ -1,8 +1,14 @@
 body {
     background-color: #F2F5F7;
+    margin: 0px;
+    padding: 0px;
 }
 * {
     font-family: 'Gudea', sans-serif;
+}
+
+a {
+    color: #ED005F;
 }
 
 table {
@@ -40,6 +46,15 @@ div.container{
 div#title {
     padding: 2px 15px;
     margin: 2px 15px;
+    display: inline-block;
+}
+
+div#subtitle {
+    background-color: black;
+    color: white;
+    display: inline-block;
+    padding: 2px 15px;
+    margin: 2px 15px;
 }
 
 div#map-cities {
@@ -50,13 +65,20 @@ div#map-cities {
     vertical-align: top;
 }
 
-div#map{
+div#map {
     width: 63%;
     max-width: 100%;
     height: 400px;
     overflow: hidden;
     vertical-align: top;
 }
+
+div#detail {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
 hr {
     border-color: none;
     color: gray;
@@ -87,7 +109,12 @@ div.subtitle {
     width: auto;
     overflow: hidden;
   }
+  .contract-map {
+    width: 100%;
+    margin: -10px;
 }
+}
+
 
 @media screen and (max-width: 1100px) {
    div#map-cities {
@@ -101,8 +128,8 @@ div.subtitle {
     width: auto;
     overflow: hidden;
   }
-}
-
-a {
-    color: #ED005F;
+  .contract-map {
+    width: 100%;
+    margin: -10px;
+  } 
 }

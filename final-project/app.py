@@ -30,14 +30,13 @@ def contract_list(product_id):
 
 
 # This doesn't work yet
-@app.route('/<contract_id>/')
-def contract(contract_id):
+@app.route('/<product_id>/<contract_id>/')
+def contract(product_id, contract_id):
     template = 'contract.html'
     object_list = hp_data.load_data()
-    for o in object_list:
-        if o['record_count'] == row_id:
-            return render_template(template, object=row)
-    abort(404)
+    record = [o for o in object_list if o['record_count'] == contract_id]
+    # x, y = geocode(str(record[0]['RecipientAddressLine123'], record[0]['RecipientCity'], record[0]['RecipientState']))
+    return render_template(template, object=record)
 
 """
 @app.route('/<city_id>/')
