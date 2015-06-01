@@ -1,123 +1,5 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-        <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Gudea:400,700' rel='stylesheet' type='text/css'>
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-        <style type="text/css">
-            body {
-                background-color: #F2F5F7;
-            }
-            * {
-                font-family: 'Gudea', sans-serif;
-            }
+{% include 'partials/head.html' %}
 
-            table {
-                border-collapse: collapse;
-            }
-
-            td {
-                padding: 20px;
-            }
-            th {
-                padding: 10px;
-            }
-            tr:nth-child(even) {
-                background: #EBEEF2
-            }
-
-            a {
-                text-decoration: none;
-            }
-            h2.subtitle {
-                color: gray;
-                margin-top: 0px;
-            }
-            div.contract {
-                background-color: white;
-                padding: 15px;
-                margin: 15px;
-            }
-
-            div.container{
-                background-color: white;
-                padding: 15px;
-                margin: 15px;
-            }
-            div#title {
-                padding: 2px 15px;
-                margin: 2px 15px;
-            }
-
-            div#map-cities {
-                width: 35%;
-                max-width: 100%;
-                float: left;
-                margin-right: 15px;
-                vertical-align: top;
-            }
-
-            div#map{
-                width: 63%;
-                max-width: 100%;
-                height: 400px;
-                overflow: hidden;
-                vertical-align: top;
-            }
-            hr {
-                border-color: none;
-                color: gray;
-                background-color: #gray;
-                height: 1px;
-                margin: 10px;
-            }
-
-            div.bar {
-                height: 20px;
-                background-color: black;
-            }
-
-            div.subtitle {
-                background-color: black;
-                color: white;
-                padding: 15px;
-                margin: 0px;
-            }
-
-            @media screen and (max-width: 1240px) {
-               div#map-cities { 
-                float: left;
-                margin-right:10px; 
-                width: auto; 
-              }
-              div#map {
-                width: auto;
-                overflow: hidden;
-              }
-            }
-
-            @media screen and (max-width: 1100px) {
-               div#map-cities { 
-                float: none;
-                width: auto;
-                max-width: auto;
-                margin-right:0px;
-                margin-bottom: 20px;
-              }
-              div#map {
-                width: auto;
-                overflow: hidden;
-              }
-            }
-
-            a {
-                color: #ED005F;
-            }
-
-        </style>
-    </head>
-    <body>
         <div id="title"><h1>Hewlett-Packard Contract Explorer</h1></div>
         <div class="contract">
         <h2 class="subtitle">Most common products or services</h2>
@@ -128,7 +10,7 @@
                      <th>Total dollars</th>
                      <th></th>
                 </tr>
-                {% for prod in products_list[:5] %}        
+                {% for prod in products_list[:5] %}
                 <tr>
                     <td style="max-width:500px"><a href="{{ prod[4] }} ">{{ prod[0] }}</a></td>
                     <td style="text-align:center">{{ prod[2] }}</td>
@@ -145,18 +27,18 @@
                         <tr>
                             <th>City</th>
                             <th># of contracts</th>
-                            <th>Total dollars</th>  
+                            <th>Total dollars</th>
                         </tr>
-                        {% for recip in recipient_city_list[:5] %}        
+                        {% for recip in recipient_city_list[:5] %}
                         <tr>
                             <td>{{ recip[0] }}</td>
                             <td style="text-align:center">{{ recip[2] }}</td>
                             <td style="text-align:right">${{ recip[1] }}</td>
                         </tr>
                         {% endfor %}
-                    </table>   
+                    </table>
             </div>
-            <div id="map"></div>    
+            <div id="map"></div>
         </div>
 
         <script type="text/javascript">
@@ -197,5 +79,6 @@
             map.addLayer(dataLayer);
         </script>
 
-    </body>
-</html>
+
+
+{% include 'partials/foot.html' %}

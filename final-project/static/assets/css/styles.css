@@ -70,11 +70,18 @@ div.bar {
     background-color: black;
 }
 
+div.subtitle {
+    background-color: black;
+    color: white;
+    padding: 15px;
+    margin: 0px;
+}
+
 @media screen and (max-width: 1240px) {
-   div#map-cities { 
+   div#map-cities {
     float: left;
-    margin-right:10px; 
-    width: auto; 
+    margin-right:10px;
+    width: auto;
   }
   div#map {
     width: auto;
@@ -83,7 +90,7 @@ div.bar {
 }
 
 @media screen and (max-width: 1100px) {
-   div#map-cities { 
+   div#map-cities {
     float: none;
     width: auto;
     max-width: auto;
@@ -96,6 +103,6 @@ div.bar {
   }
 }
 
-a:link {
-    color: red;
+a {
+    color: #ED005F;
 }
