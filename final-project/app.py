@@ -25,14 +25,16 @@ for h in hp_data:
 
 # print(agencies)
 
+###################################################
 # CONTRACTS BY RECIPIENT CITY
 recipient_city = []
 cities = []
 for h in hp_data:
     city_state = str(h['RecipientCity'] + ", " + h['RecipientState'])
+    ident = h['RecipientCity']
     contract_amount = int(float(h['DollarsObligated']))
     if city_state not in cities:
-        recipient_city.append([city_state, contract_amount, 1, 'x', 'y'])
+        recipient_city.append([city_state, contract_amount, 1, 'x', 'y', ident])
         cities.append(city_state)   
     else: 
         for r in recipient_city:
@@ -51,10 +53,12 @@ for r in recipient_city:
     r[3] = data['results'][0]['geometry']['location']['lat']
     r[4] = data['results'][0]['geometry']['location']['lng']
 
-print(recipient_city)
+###################################################
 
-# CONTRACTS BY PERFORMANCE CITY
+
+
 '''
+# CONTRACTS BY PERFORMANCE CITY
 performance_city = {}
 for h in hp_data:
     if h['PlaceofPerformanceState']: # not every contract line has a 'PlaceofPerformanceState' key?
@@ -81,8 +85,8 @@ for h in hp_data:
     else:
         fiscal_year[year] = contract_amount
 
-# print(fiscal_year)
 
+###################################################
 # DOLLARS OBLIGATED BY PRODUCTS OR SERVICE CODE
 products_code = []
 codes = []
@@ -90,7 +94,7 @@ for h in hp_data:
     code = h['ProductorServiceCode']
     contract_amount = int(float(h['DollarsObligated'])) 
     if code not in codes:
-        products_code.append([code, contract_amount, 1, 'width'])
+        products_code.append([code, contract_amount, 1, 'width', 'id'])
         codes.append(code)   
     else: 
         for p in products_code:
@@ -106,8 +110,11 @@ unit = products_code[0][1] / 100
 for p in products_code:
     width = p[1] / unit
     p[3] = width * 4
+    ident = p[0].split(':')
+    ident = ident[0]
+    p[4] = ident
 
-
+###################################################
 
 @app.route("/")    
 def index():
@@ -117,15 +124,30 @@ def index():
     recipient_city_list = recipient_city
     return render_template(template, object_list=object_list, products_list=products_list, recipient_city_list=recipient_city_list)
 
-'''
-@app.route('/<row_id>/')
-def detail(row_id):
-    template = 'detail.html'
-    object_list = get_json()
-    for row in object_list:
-        if row['id'] == row_id:
-            return render_template(template, object=row) 
-    abort(404)           
-'''
+
+@app.route('/<product_id>/')
+def list(product_id):
+    template = 'list.html'
+    products_list = products_code
+    object_list = hp_data
+    for p in products_list:
+        if p[4] == product_id:
+            object_list = [o for o in object_list if p[0] == o["ProductorServiceCode"]]          
+            return render_template(template, object_list=object_list) 
+    abort(404)
+
+"""
+@app.route('/<city_id>/')
+def list(city_id):
+    template = 'geo-list.html'
+    cities_list = recipient_city
+    object_list = hp_data
+    for c in cities:
+        if c[5] == city:
+            object_list = [o for o in object_list if c[0] == o["RecipientCity"]]          
+            return render_template(template, object_list=object_list) 
+    abort(404)              
+"""
+
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)
