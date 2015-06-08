@@ -55,50 +55,11 @@ def contracts_by_city(hpdata):
 
     return recipient_city
 
-    """
-    # GEOCODING HPDATA
-    def geocode(address):
-        atts = {'address': address, 'key': 'AIzaSyDdBsQKgsXLrHAil_feh5RK_g5lyxbRmAU'}
-        resp = requests.get(maps_url, params = atts)
-        data = resp.json()
-        x = data['results'][0]['geometry']['location']['lat']
-        y = data['results'][0]['geometry']['location']['lng']
-        return(x, y)
-    """
 
 ###################################################
 
 
-
-'''
-# CONTRACTS BY PERFORMANCE CITY
-performance_city = {}
-for h in hpdata:
-    if h['PlaceofPerformanceState']: # not every contract line has a 'PlaceofPerformanceState' key?
-        state = h['PlaceofPerformanceState'].split(':')
-        state = state[0]
-        print(state)
-        city = h['PrincipalPlaceCountyOrCity']
-        city_state = str(city + ',' + state)
-        if city_state in performance_city:
-            performance_city[city_state] += 1
-        else:
-            performance_city[city_state] = 1
-
-print(performance_city)
-'''
-
 # DOLLARS OBLIGATED BY FISCAL YEAR
-def dollars_by_fiscal_year(hpdata):
-    fiscal_year = {}
-    for h in hpdata:
-        year = h['FiscalYear']
-        contract_amount = float(h['DollarsObligated'])
-        if year in fiscal_year:
-            fiscal_year[year] += contract_amount
-        else:
-            fiscal_year[year] = contract_amount
-    return fiscal_year
 
 ###################################################
 # DOLLARS OBLIGATED BY PRODUCTS OR SERVICE CODE

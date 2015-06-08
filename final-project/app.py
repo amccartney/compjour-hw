@@ -17,7 +17,7 @@ def index():
     return render_template(template, object_list=object_list, products_list=products_list, recipient_city_list=recipient_city_list)
 
 
-@app.route('/<product_id>/')
+@app.route('/product/<product_id>/')
 def contract_list(product_id):
     template = 'list.html'
     object_list = hp_data.load_data()
@@ -28,28 +28,26 @@ def contract_list(product_id):
             return render_template(template, object_list=object_list)
     abort(404)
 
+@app.route('/city/<city_id>/')
+def list(city_id):
+    template = 'geo-list.html'
+    object_list = hp_data.load_data()
+    cities_list = hp_data.contracts_by_city(object_list)
+    for c in cities_list:
+        if c[5] == city_id:
+            object_list = [o for o in object_list if c[0] == o["RecipientCity"]]
+            return render_template(template, object_list=object_list)
+    abort(404)
+
 
 # This doesn't work yet
-@app.route('/<product_id>/<contract_id>/')
+@app.route('/product/<product_id>/<contract_id>/')
 def contract(product_id, contract_id):
     template = 'contract.html'
     object_list = hp_data.load_data()
     record = [o for o in object_list if o['record_count'] == contract_id]
-    # x, y = geocode(str(record[0]['RecipientAddressLine123'], record[0]['RecipientCity'], record[0]['RecipientState']))
     return render_template(template, object=record)
 
-"""
-@app.route('/<city_id>/')
-def list(city_id):
-    template = 'geo-list.html'
-    cities_list = recipient_city
-    object_list = hp_data
-    for c in cities:
-        if c[5] == city:
-            object_list = [o for o in object_list if c[0] == o["RecipientCity"]]
-            return render_template(template, object_list=object_list)
-    abort(404)
-"""
 
 if __name__ == '__main__':
     app.run(debug=True, use_reloader=True)

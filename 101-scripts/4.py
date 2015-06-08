@@ -1,7 +1,9 @@
-import requests, bs4
+import requests, json
 
-response = requests.get('https://www.osha.gov/dep/fatcat/dep_fatcat.html')
+url = 'https://data.usajobs.gov/api/jobs?'
+atts = {'Title': 'Librarian'}
 
-soup = bs4.BeautifulSoup(response.text)
+resp = requests.get(url, params = atts)
+data = resp.json()
 
-print(soup.select('h5')[1].text)
+print(len(data['JobData']))

@@ -11,7 +11,7 @@
                 </tr>
                 {% for prod in products_list[:5] %}
                 <tr>
-                    <td style="max-width:500px"><a href="{{ prod[4] }} ">{{ prod[0] }}</a></td>
+                    <td style="max-width:500px"><a href="product/{{ prod[4] }} ">{{ prod[0] }}</a></td>
                     <td style="text-align:center">{{ prod[2] }}</td>
                     <td style="text-align:right">${{ prod[1] }}</td>
                     <td style="max-width:500px"><div class="bar" style="width:{{ prod[3]}}px"></div></td>
@@ -30,7 +30,7 @@
                         </tr>
                         {% for recip in recipient_city_list[:5] %}
                         <tr>
-                            <td>{{ recip[0] }}</td>
+                            <td><a href="city/{{ recip[5] }} ">{{ recip[0] }}</td>
                             <td style="text-align:center">{{ recip[2] }}</td>
                             <td style="text-align:right">${{ recip[1] }}</td>
                         </tr>
@@ -56,7 +56,7 @@
                   "type": "Feature",
                   "properties": {
                     "Site_Name": "{{ recip[0] }}",
-                    "id": "{{ recip[0] }}"
+                    "id": "city/{{ recip[5] }}"
                   },
                   "geometry": {
                     "type": "Point",

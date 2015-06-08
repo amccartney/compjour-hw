@@ -3,9 +3,9 @@
 {% include 'partials/head.html' %}
 
         <div id="title"><h1>Hewlett-Packard</h1></div>
-        <div id="subtitle"><p style="font-size: 12px; letter-spacing: 1.5px;">{{ object_list[0]['ProductorServiceCode'] }} </p></div>
+        <div id="subtitle"><p style="font-size: 12px; letter-spacing: 1.5px;">{{ object_list['ProductorServiceCode'] }} </p></div>
 
-
+        {{ object_list }}
 
         {% for obj in object_list %}
             <div class="contract">

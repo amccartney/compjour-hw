@@ -1,6 +1,11 @@
-import bs4, requests
+import requests
 
-response = requests.get('http://www.dc.state.fl.us/oth/deathrow/execlist.html')
-soup = bs4.BeautifulSoup(response.text)
+url = 'https://health.data.ny.gov/resource/dk4z-k3xb.json'
+atts = {'comparison_results': 'Rate significantly higher than Statewide Rate'}
 
-print(len(soup.select('tr')))
+response = requests.get(url, params=atts)
+data = response.json()
+
+# devices = soup.select("tr")
+
+print(len(data))

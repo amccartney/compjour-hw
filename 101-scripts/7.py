@@ -1,13 +1,10 @@
-import requests, json
+import bs4, requests, csv
 
-# url = 'https://api.fda.gov/drug/enforcement.json'
-# atts = {'api_key': 'HvobCMlNGQDLfIJf2je1qPIou8fv69wTuP7hFr0e', 'search':'report_date:[20120101+TO+20151231]', 'count': 'classification'}
-# resp = requests.get(url, params = atts)
+response = requests.get('https://inventory.data.gov/dataset/fe9eeb10-2e90-433e-a955-5c679f682502/resource/b626ef1f-9019-41c4-91aa-5ae3f7457328/download/federalexecagncyintntdomains03302015.csv').text
+reader = csv.reader(response.splitlines())
 
-url = 'https://api.fda.gov/drug/enforcement.json?search=report_date:[20120101+TO+20151231]&count=classification'
+line_count = 0
+for row in reader:
+    line_count += 1
 
-resp = requests.get(url)
-
-data = resp.json()
-
-print(data['results'][3]['count'])
+print(line_count)
