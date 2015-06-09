@@ -6,13 +6,41 @@
 
 
             <div class="contract">
-                <h1>${{ object[0]['DollarsObligated'] }}</h1>
-                {{ object }}
                 
-                <h4>{{ object.AgencyID }} / {{ object.ContractingAgency }}</h4>
-                <p>{{ object.ContractDescription }}</p>
-                <p>{{ object.RecipientAddressLine123 }}, {{ object.RecipientCity }}, {{ object.RecipientState }}</p>
+                <div class="title-box"><h2>Contract information</h2></div>
+                <div class="sub-box">
+                    <h1>${{ object[0]['DollarsObligated'] }}</h1>
+                    <p><strong>Agency ID: {{ object[0]['AgencyID'] }}</strong></p>
+                    <p>Contracting Agency: {{ object[0]['ContractingAgency'].split(':')[1] }}</p>
+                    <p>Date signed: {{ object[0]['DateSigned'].split('T')[0] }}</p>
+                    <p>Fiscal year: {{ object[0]['FiscalYear'] }}</p>
+                </div>
+                 <div class="sub-box">
+                    <p><strong>Modification number</strong></p>
+                    <p>{{ object[0]['ModificationNumber'] }}</p></p>
+                    <p><strong>Product or service code</strong></p>
+                    <p>{{ object[0]['ProductorServiceCode'] }}</p></p>
+                    <p><strong>Contract Description</strong></p>
+                    <p>{{ object[0]['ContractDescription'] }}</p>
+                </div>
+
+                
+
             </div>
+            <div class="contract">
+                <div class="title-box"><h2>Location information</h2></div>
+                <div class="sub-box">
+                    <h3>Recipient's location</h3>
+                    <p>Address: {{ object[0]['RecipientAddressLine123'] }}, {{ object[0]['RecipientCity'] }}, {{ object[0]['RecipientState'] }} {{ object[0]['RecipientZipCode'] }} </p>
+                    <p>Congressional district: {{ object[0]['RecipientState'] }}-{{ object[0]['RecipientCongressionalDistrict'] }} </p>
+                </div>
+                <div class="sub-box">
+                    <h3>Place of contract performance</h3>
+                    <p>Performance city: {{ object[0]['PlaceofPerformanceCity'] }}, {{ object[0]['PlaceofPerformanceState'] }} {{ object[0]['PlaceofPerformanceZipCode'] }}</p>
+                    <p>Congressional district: {{ object[0]['PlaceofPerformanceState'] }}-{{ object[0]['PlaceofPerformanceCongDistrict'] }} </p>
+                </div>
+            </div>
+
 
         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
         <script type="text/javascript">

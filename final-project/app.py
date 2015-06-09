@@ -6,7 +6,6 @@ from helpers import hp_data
 
 app = Flask(__name__)
 
-###################################################
 
 @app.route("/")
 def index():
@@ -28,6 +27,7 @@ def contract_list(product_id):
             return render_template(template, object_list=object_list)
     abort(404)
 
+
 @app.route('/city/<city_id>/')
 def list(city_id):
     template = 'geo-list.html'
@@ -35,14 +35,21 @@ def list(city_id):
     cities_list = hp_data.contracts_by_city(object_list)
     for c in cities_list:
         if c[5] == city_id:
-            object_list = [o for o in object_list if c[0] == o["RecipientCity"]]
+            object_list = [o for o in object_list if c[5] == o["RecipientCity"]]
             return render_template(template, object_list=object_list)
     abort(404)
 
 
-# This doesn't work yet
 @app.route('/product/<product_id>/<contract_id>/')
-def contract(product_id, contract_id):
+def product_contract(product_id, contract_id):
+    template = 'contract.html'
+    object_list = hp_data.load_data()
+    record = [o for o in object_list if o['record_count'] == contract_id]
+    return render_template(template, object=record)
+
+
+@app.route('/city/<city_id>/<contract_id>/')
+def city_contract(city_id, contract_id):
     template = 'contract.html'
     object_list = hp_data.load_data()
     record = [o for o in object_list if o['record_count'] == contract_id]

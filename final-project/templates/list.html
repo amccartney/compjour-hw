@@ -8,7 +8,7 @@
 
         {% for obj in object_list %}
             <div class="contract">
-                <small>{{ obj.DateSigned }}</small>
+                <small>Fiscal year: {{ obj.FiscalYear }}</small>
                 <h1><a href="{{ obj.record_count }} ">${{ obj.DollarsObligated }}</a></h1>
                 <h4>{{ obj.AgencyID }} / {{ obj.ContractingAgency }}</h4>
                 <p>{{ obj.ContractDescription }}</p>

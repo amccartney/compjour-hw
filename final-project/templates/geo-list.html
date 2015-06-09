@@ -3,14 +3,12 @@
 {% include 'partials/head.html' %}
 
         <div id="title"><h1>Hewlett-Packard</h1></div>
-        <div id="subtitle"><p style="font-size: 12px; letter-spacing: 1.5px;">{{ object_list['ProductorServiceCode'] }} </p></div>
-
-        {{ object_list }}
+        <div id="subtitle"><p style="font-size: 12px; letter-spacing: 1.5px;">{{ object_list[0]['RecipientCity'] }}, {{ object_list[0]['RecipientState'] }} </p></div>
 
         {% for obj in object_list %}
             <div class="contract">
-                <small>{{ obj.DateSigned }}</small>
-                <h1>${{ obj.DollarsObligated }}</h1>
+                <small>Fiscal year: {{ obj.FiscalYear }}</small>
+                <h1><a href="{{ obj.record_count }} ">${{ obj.DollarsObligated }}</a></h1>
                 <h4>{{ obj.AgencyID }} / {{ obj.ContractingAgency }}</h4>
                 <p>{{ obj.ContractDescription }}</p>
                 <p>{{ obj.RecipientAddressLine123 }}, {{ obj.RecipientCity }}, {{ obj.RecipientState }}</p>

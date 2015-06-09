@@ -42,6 +42,21 @@ div.contract {
     margin: 15px;
 }
 
+div.sub-box {
+    border: 1px solid #F2F5F7;
+    border-radius: 3px;
+    width: 40%;
+    padding: 15px;
+    margin: 15px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+div.title-box{
+    width: 100%;
+    padding-left: 15px;
+}
+
 div.container{
     background-color: white;
     padding: 15px;
@@ -130,6 +145,7 @@ div.subtitle {
 }
 
 
+
 @media screen and (max-width: 1100px) {
    div#map-cities {
     float: none;
@@ -145,5 +161,14 @@ div.subtitle {
   .contract-map {
     width: 100%;
     margin: -10px;
-  } 
+  }
+  div.sub-box {
+    border: 1px solid #F2F5F7;
+    border-radius: 3px;
+    width: 90%;
+    padding: 15px;
+    margin: 15px;
+    display: inline-block;
+  }
 }
+
