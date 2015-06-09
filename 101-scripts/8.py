@@ -6,6 +6,4 @@ atts = {'comparison_results': 'Rate significantly higher than Statewide Rate'}
 response = requests.get(url, params=atts)
 data = response.json()
 
-# devices = soup.select("tr")
-
 print(len(data))
